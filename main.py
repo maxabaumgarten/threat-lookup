@@ -42,7 +42,7 @@ def gn_results(data):
         print(f"Name: {data['name']}")
         print(f"Last Seen: {data['last_seen']}")
         print(f"link: {data['link']}")
-    if data["riot"]:
+    elif data["riot"]:
         print(f"IP: {data['ip']}")
         print(f"Classification: {data['classification']}")
         print(f"Name: {data['name']}")
