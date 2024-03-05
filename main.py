@@ -117,9 +117,6 @@ def otx_results(data):
         print(f"# of Pulses: {data['pulse_info']['count']}")
         
 
-
-
-
 # Main function
 def main():
     if len(sys.argv) != 2:
@@ -160,7 +157,6 @@ def main():
         print()
     else:
         print("No AlienVault OTX API key found. Skipping AlienVault OTX lookup.")
-
 
 if __name__ == "__main__":
     main()
