@@ -36,21 +36,18 @@ def gn_lookup(ip):
 
 # Function to print the results of the GN IP lookup
 def gn_results(data):
-    if data["noise"]:
-        print(f"IP: {data['ip']}")
-        print(f"Classification: {data['classification']}")
-        print(f"Name: {data['name']}")
-        print(f"Last Seen: {data['last_seen']}")
-        print(f"link: {data['link']}")
-    elif data["riot"]:
-        print(f"IP: {data['ip']}")
-        print(f"Classification: {data['classification']}")
-        print(f"Name: {data['name']}")
-        print(f"Last Seen: {data['last_seen']}")
-        print(f"link: {data['link']}")
+    if data is None:
+        print("No data returned from GreyNoise.")
     else:
-        print(f"IP: {data['ip']}")
-        print("No results found for this IP address.")
+        try:
+            print(f"Noise: {data['noise']}")
+            print(f"riot: {data['riot']}")
+            print(f"Classification: {data['classification']}")
+            print(f"Name: {data['name']}")
+            print(f"Last Seen: {data['last_seen']}")
+            print(f"Message: {data['message']}")
+        except KeyError:
+            print("No data returned from GreyNoise.")
 
 # Function to perform IP lookup against Shodan
 def shodan_lookup(ip):
@@ -67,7 +64,6 @@ def shodan_results(data):
         print("No results found for this IP address.")
     else:
         try:
-            print(f"IP: {data['ip_str']}")
             print(f"Organization: {data['org']}")
             print(f"Operating System: {data['os']}")
             print(f"Ports: {data['ports']}")
@@ -118,7 +114,6 @@ def otx_results(data):
     if data is None:
         print("No data returned from AlienVault OTX.")
     else:
-        print(f"IP: {data['indicator']}")
         print(f"# of Pulses: {data['pulse_info']['count']}")
         
 
